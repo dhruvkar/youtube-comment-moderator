@@ -6,6 +6,19 @@ description: >
   and deletes spam. Works with any YouTube channel via OAuth.
   Use when moderating YouTube comments, setting up auto-replies, analyzing
   comment sentiment, managing spam, or building a comment moderation pipeline.
+env:
+  - name: YOUTUBE_API_KEY
+    required: true
+    description: YouTube Data API v3 key (free, 10K units/day)
+  - name: GEMINI_API_KEY
+    required: true
+    description: Gemini API key for comment classification
+  - name: YT_MOD_CLIENT_ID
+    required: true
+    description: Google OAuth client ID (for reply/delete operations)
+  - name: YT_MOD_CLIENT_SECRET
+    required: true
+    description: Google OAuth client secret (for reply/delete operations)
 ---
 
 # YouTube Comment Moderator
@@ -52,12 +65,18 @@ Generate the auth URL and send it to the user:
 source .env && python3 scripts/setup.py --auth-url
 ```
 
-Tell them: "Open this link, sign in with the Google account that owns your YouTube channel, and click Allow. Your browser will redirect to a page that won't load — that's expected. Copy the entire URL from your browser's address bar and paste it back here."
+Tell them: "Open this link, sign in with the Google account that owns your YouTube channel, and click Allow."
 
-When they paste the URL:
+**If user has a local browser (desktop):** The script automatically catches the callback on `http://127.0.0.1:8976/callback` and saves the token. Tell them: "After clicking Allow, the browser should show a success page. You're done — I'll verify the token was saved."
+
+**If user is headless/remote (VPS, Telegram):** Tell them: "After clicking Allow, your browser will redirect to a URL starting with `http://127.0.0.1:8976/callback?code=...`. That page won't load — that's expected. Copy ONLY the `code` parameter value from the URL (the part between `code=` and the next `&`), and paste just that code here. Do NOT paste the full URL — it contains sensitive auth data."
+
+When they provide the code:
 ```bash
-source .env && python3 scripts/setup.py --exchange-code "<PASTED_URL>"
+source .env && python3 scripts/setup.py --exchange-code "http://127.0.0.1:8976/callback?code=<CODE>"
 ```
+
+⚠️ **Security note:** The OAuth code is single-use and expires in minutes, but avoid logging or echoing the full callback URL. If the user accidentally pastes a full URL in chat, exchange it immediately, then advise them the code is already consumed and useless.
 
 ### 4. Configure
 
