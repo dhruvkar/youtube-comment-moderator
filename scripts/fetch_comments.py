@@ -15,7 +15,7 @@ from urllib.error import HTTPError
 
 API_KEY = os.environ.get("YOUTUBE_API_KEY")
 BASE_URL = "https://www.googleapis.com/youtube/v3"
-OUTPUT_DIR = "data/youtube-moderator"
+OUTPUT_DIR = "data/youtube-comment-moderator"
 
 
 def api_get(endpoint, params):

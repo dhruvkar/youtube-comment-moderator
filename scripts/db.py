@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 
 DEFAULT_DB_PATH = os.environ.get(
     "YT_MOD_DB",
-    os.path.join("data", "youtube-moderator", "moderator.db")
+    os.path.join("data", "youtube-comment-moderator", "moderator.db")
 )
 
 

@@ -15,8 +15,8 @@ from urllib.request import urlopen, Request
 from urllib.parse import urlencode, parse_qs, urlparse
 from urllib.error import HTTPError
 
-CONFIG_PATH = "skills/youtube-moderator/config.json"
-OAUTH_PATH = "skills/youtube-moderator/oauth.json"
+CONFIG_PATH = "skills/youtube-comment-moderator/config.json"
+OAUTH_PATH = "skills/youtube-comment-moderator/oauth.json"
 
 # Google OAuth endpoints
 GOOGLE_AUTH_URL = "https://accounts.google.com/o/oauth2/v2/auth"
@@ -500,8 +500,8 @@ def main():
         print(f"\n  ⚠️  Run setup again to add OAuth when ready for write access")
     
     print(f"\n  Test it:")
-    print(f"  python3 skills/youtube-moderator/scripts/fetch_comments.py --channel-id {channel_id} --max-videos 1")
-    print(f"  python3 skills/youtube-moderator/scripts/classify_comments.py")
+    print(f"  python3 skills/youtube-comment-moderator/scripts/fetch_comments.py --channel-id {channel_id} --max-videos 1")
+    print(f"  python3 skills/youtube-comment-moderator/scripts/classify_comments.py")
 
 
 if __name__ == "__main__":

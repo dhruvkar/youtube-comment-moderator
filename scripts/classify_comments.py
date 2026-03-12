@@ -15,7 +15,7 @@ from urllib.error import HTTPError
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_AI_API_KEY")
 GEMINI_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent"
-OUTPUT_DIR = "data/youtube-moderator"
+OUTPUT_DIR = "data/youtube-comment-moderator"
 
 SYSTEM_PROMPT = """You are a YouTube comment classifier. Classify each comment into exactly one category:
 

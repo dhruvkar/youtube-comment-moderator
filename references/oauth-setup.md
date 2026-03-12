@@ -9,7 +9,7 @@ This guide walks you through creating Google OAuth credentials so the moderator 
 
 1. Go to [Google Cloud Console](https://console.cloud.google.com/)
 2. Click the project dropdown (top left) → **New Project**
-3. Name it something like `youtube-moderator`
+3. Name it something like `youtube-comment-moderator`
 4. Click **Create**
 5. Make sure the new project is selected in the dropdown
 
@@ -45,7 +45,7 @@ This guide walks you through creating Google OAuth credentials so the moderator 
 1. Go to [APIs & Services → Credentials](https://console.cloud.google.com/apis/credentials)
 2. Click **Create Credentials** → **OAuth client ID**
 3. Application type: **Web application**
-4. Name: `youtube-moderator`
+4. Name: `youtube-comment-moderator`
 5. Under **Authorized redirect URIs**, add:
    ```
    http://127.0.0.1:8976/callback

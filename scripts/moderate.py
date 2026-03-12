@@ -44,8 +44,8 @@ from db import (
 API_KEY = os.environ.get("YOUTUBE_API_KEY")
 GEMINI_KEY = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_AI_API_KEY")
 BASE_URL = "https://www.googleapis.com/youtube/v3"
-OAUTH_PATH = os.environ.get("YT_MOD_OAUTH", "skills/youtube-moderator/oauth.json")
-CONFIG_PATH = os.environ.get("YT_MOD_CONFIG", "skills/youtube-moderator/config.json")
+OAUTH_PATH = os.environ.get("YT_MOD_OAUTH", "skills/youtube-comment-moderator/oauth.json")
+CONFIG_PATH = os.environ.get("YT_MOD_CONFIG", "skills/youtube-comment-moderator/config.json")
 
 CLIENT_ID = os.environ.get("YT_MOD_CLIENT_ID", "")
 CLIENT_SECRET = os.environ.get("YT_MOD_CLIENT_SECRET", "")
